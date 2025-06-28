@@ -1,51 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
-    <title>Home</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel= "stykesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-    </head>
-    <body>
-    <nav>
-    <a href="/" aria-current="current">home</a>
-    </nav>
-    <main>
-      <h1>Alunos ceti raldir bastos</h1>
+    <title>banco de dados-alunos 2025</title>
+    <style>
+      body {
+        font-family: Courier new, Arial;
+        padding: 20px:
+        background-color: #f2f2f2;
+      }
       
-    <!-- formulário para adicionar aluno -->
+      h1,h2 {
+      
+        color: #333;
+      }
+      
+      form {
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0.1);
+     }
+     
+     label {
+      display: block;
+      margin-top: 10px;
+     }
+     
+     input {
+      widht: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    
+    button {
+      margin-top: 15px;
+      padding: 10px 20 px;
+      background-color: #4169E1;
+      color: black;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #4169E1;
+    color: black;
+  }
+</style>       
+  </head>
+  <body>
+    <h1>alunos ceti Raldir bastos</h1>
+
     <form id="add-aluno-form">
       <label for="name">Nome:</label>
-      <input type="text" id="name" required />
-      <br />
-      <label for="team">Sala</label>
-  <input type="text" id="sala" required />
-  <br />
-  <label for="serie">Série:</label>
-  <input type="text" id="position" required />
-  <br />
-  <label for="idade">Idade:</label>
-  <input type="text" id="idade required" />
-  <body>
-  <br />
-  <button type= "submit">adicionar aluno</button>
-  </form>
-  
-  <h2> estudantes do ceti raldir bastos</h2>
-  <table id="tabela-estudantes">
-  <thead>
-    <tr>
-      <th>nome</th>
-      <th>sala</th>
-      <th>série</th>
-      <th>idade</th>
-    </tr>
-    </thead>
-    <tbody>
-      <! -- alunos serão listados aqui -->
-    </tbody>
-   </table>
-  </main>
- </body>
+      <input type="text" id="name" required /> <br>
+
+      <label for="sala">Sala:</label>
+      <input type="text" id="sala" required /> <br>
+
+      <label for="serie">Série:</label>
+      <input type="text" id="serie" required /> <br>
+
+      <label for="idade">Idade:</label>
+      <input type="text" id="idade" required /> <br>
+
+      <button type="submit">Adicionar Aluno</button>
+    </form>
+
+    <div class="container">
+      <h2>estudantes do ceti ralidr bastos</h2>
+      <table id="alunos-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Sala</th>
+            <th>Série</th>
+            <th>Idade</th>
+          </tr>
+        </thead>
+        <tbody id="alunos-body">
+          <tr>
+            <td>Jesus Alfredo</td>
+            <td>05</td>
+            <td>2º Ano</td>
+            <td>17</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      const form = document.getElementById('add-aluno-form');
+      const tbody = document.getElementById('alunos-body');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+      
+        const nome = document.getElementById('name').value;
+        const sala = document.getElementById('sala').value;
+        const serie = document.getElementById('serie').value;
+        const idade = document.getElementById('idade').value;
+
+      
+        const novaLinha = document.createElement('tr');
+        novaLinha.innerHTML = `
+          <td>${nome}</td>
+          <td>${sala}</td>
+          <td>${serie}</td>
+          <td>${idade}</td>
+        `;
+
+        
+        tbody.appendChild(novaLinha);
+
+    
+        form.reset();
+      });
+    </script>
+  </body>
 </html>
